@@ -5,7 +5,7 @@ this script for run easy v2ray ( vless+tcp+http)
 ## Installation Guide
 just need you to run this command
 ```
- bash -c "$(curl -L https://raw.githubusercontent.com/debug-ing/xray-tcp-http-easy/main/install.sh)"
+ bash -c "$(curl -L https://raw.githubusercontent.com/debug-ing/xray-tcp-http-easy/main/install.sh) test.com"
 ``` 
 
 ## Uninstallation guide

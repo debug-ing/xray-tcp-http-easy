@@ -10,7 +10,7 @@ bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release
 json=$(curl -s https://raw.githubusercontent.com/debug-ing/xray-tcp-http-easy/main/config.json)
 ip=$(curl -s ifconfig.me)
 uuid=$(xray uuid)
-host=fast.com
+host=$1
 url="vless://$uuid@$ip:443?type=tcp&security=none&headerType=http&host=$host&path=/#config"
 
 config=$(echo "$json" | jq \

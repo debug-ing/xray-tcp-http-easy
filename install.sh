@@ -1,7 +1,13 @@
+#insall paackage
+sudo apt-get update
+sudo apt-get install -y jq
+sudo apt-get install -y qrencode
+
+#install xray
 bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install --beta
 
-json=$(curl -s https://raw.githubusercontent.com/debug-ing/xray-reality/master/config.json)
-
+#config xray
+json=$(curl -s https://raw.githubusercontent.com/debug-ing/xray-tcp-http-easy/main/config.json)
 ip=$(curl -s ifconfig.me)
 uuid=$(xray uuid)
 host=fast.com
@@ -12,6 +18,7 @@ config=$(echo "$json" | jq \
     --arg host "$host" \
     '.inbounds[0].settings.clients[0].id = $uuid |
      .inbounds[0].streamSettings.tcpSettings.header.request.headers.Host = ["'$host'"]')
+
 echo "$config" | sudo tee /usr/local/etc/xray/config.json >/dev/null
 
 sudo service xray restart

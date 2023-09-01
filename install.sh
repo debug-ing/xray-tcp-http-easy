@@ -1,4 +1,7 @@
-#insall paackage
+#set host url
+read -p "Enter host url: " host
+host=${host}
+#update and install package
 sudo apt-get update
 sudo apt-get install -y jq
 sudo apt-get install -y qrencode
@@ -8,9 +11,8 @@ bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release
 
 #config xray
 json=$(curl -s https://raw.githubusercontent.com/debug-ing/xray-tcp-http-easy/main/config.json)
-ip=$(curl -s ifconfig.me)
+ip=$(curl -s checkip.amazonaws.com)
 uuid=$(xray uuid)
-host=$1
 url="vless://$uuid@$ip:443?type=tcp&security=none&headerType=http&host=$host&path=/#config"
 
 config=$(echo "$json" | jq \
